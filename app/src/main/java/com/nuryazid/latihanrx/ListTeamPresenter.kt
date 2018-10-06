@@ -16,6 +16,7 @@ class ListTeamPresenter (private val view: ListTeamView, private val apiService:
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                         {
+
                             val responseString = it.string()
                             val jsonResponse = JSONObject(responseString)
 
@@ -25,7 +26,7 @@ class ListTeamPresenter (private val view: ListTeamView, private val apiService:
                             view.showTeam(teamArrayResponse)
                         },
                         {
-
+                            it.localizedMessage
                         }
                 )
 
